@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public abstract class AbstractPage {
-  protected static final String URL = "http://localhost:9000/";
+  protected static final String URL = "https://www.amazon.pl";
   protected WebDriver webDriver;
 
   protected AbstractPage(TestContext testContext) {
