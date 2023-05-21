@@ -1,5 +1,5 @@
-import conf.Browser;
-import conf.ScenarioContext;
+import org.qam.conf.Browser;
+import org.qam.conf.ScenarioContext;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
