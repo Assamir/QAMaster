@@ -1,6 +1,7 @@
 package org.qam.conf;
 
 import org.openqa.selenium.WebDriver;
+import org.qam.page.amazon.PageManager;
 
 import java.util.logging.Logger;
 
@@ -43,7 +44,7 @@ public class TestContext {
     logger.info(String.format("Time taken for %s.%s: %ss", callingClassName, callingMethodName, ((finishTime - startTime) / 1_000_000_000.0)));
   }
 
-  public PageManager getPage() {
+  public PageManager getPageManager() {
     var stackTrace = new Throwable().getStackTrace();
     callingClassName = stackTrace[1].getClassName();
     callingMethodName = stackTrace[1].getMethodName();

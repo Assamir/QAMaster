@@ -1,10 +1,11 @@
-package org.qam.common;
+package org.qam.page.amazon.common;
 
 import org.openqa.selenium.By;
 import org.qam.conf.TestContext;
 import org.qam.page.AbstractPage;
+import org.qam.page.amazon.AbstractAmazonPage;
 
-public class SearchBar extends AbstractPage {
+public class SearchBar extends AbstractAmazonPage {
 
   public SearchBar(TestContext testContext) {
     super(testContext);

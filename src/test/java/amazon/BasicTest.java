@@ -1,7 +1,6 @@
 package amazon;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.qam.annotation.TestConfiguration;
 import org.qam.annotation.TestPriority;
@@ -19,13 +18,13 @@ class BasicTest {
         scenarioContext = new ScenarioContext(false, Browser.CHROME);
     }
 
-//    @Test
     @TestConfiguration(testPriority = TestPriority.HIGH, testTypes = {TestType.UNIT, TestType.INTEGRATION})
     void basicSearch() {
         var testContext = scenarioContext.createTestContext();
-        var pageManager = testContext.getPage();
+        var pageManager = testContext.getPageManager();
         pageManager.searchBar()
                 .setPhrase("Razer")
                 .clickSearch();
+        testContext.finish();
     }
 }
