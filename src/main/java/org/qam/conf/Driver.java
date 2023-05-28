@@ -14,7 +14,7 @@ public class Driver {
     WebDriverManager.chromedriver().setup();
 
     var options = Browser.CHROME.equals(browser) ? new ChromeOptions() : new EdgeOptions();
-    if(!headless) options.addArguments("--headless=new");
+    if(headless) options.addArguments("--headless=new");
     return Browser.CHROME.equals(browser) ? new ChromeDriver((ChromeOptions) options) : new EdgeDriver((EdgeOptions) options);
   }
 
