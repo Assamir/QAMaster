@@ -1,11 +1,9 @@
 package org.qam.page;
 
-import org.qam.conf.TestContext;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.qam.conf.TestContext;
 
 import java.time.Duration;
 
@@ -31,8 +29,22 @@ public abstract class AbstractPage {
     return this;
   }
 
+  protected String getValue(By by) {
+    try {
+      getWebElement(by).getText();
+    } catch (TimeoutException | NoSuchElementException e) {
+      System.out.println("Element not found: " + by);
+    }
+    return getWebElement(by).getText();
+  }
+
   private WebElement getWebElement(By by) {
-    new WebDriverWait(webDriver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
+    try {
+      new WebDriverWait(webDriver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
+    }
+    catch (TimeoutException e){
+      System.out.println("Element not found " + by);
+    }
     return webDriver.findElement(by);
   }
 
