@@ -13,10 +13,11 @@ import org.qam.conf.TestContext;
 import java.time.Duration;
 
 public abstract class AbstractPage {
-    protected static final String URL = "https://www.amazon.pl";
+    protected String URL;
     protected WebDriver webDriver;
 
-    protected AbstractPage(TestContext testContext) {
+    protected AbstractPage(String url, TestContext testContext) {
+        this.URL = url;
         webDriver = testContext.getWebDriver();
     }
 
