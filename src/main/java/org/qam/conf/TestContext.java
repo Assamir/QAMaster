@@ -1,6 +1,9 @@
 package org.qam.conf;
 
+import io.restassured.RestAssured;
+import io.restassured.internal.RequestSpecificationImpl;
 import org.openqa.selenium.WebDriver;
+import org.qam.api.APIManager;
 import org.qam.page.amazon.PageManager;
 
 import java.util.logging.Logger;
@@ -12,6 +15,8 @@ public class TestContext {
   private final WebDriver webDriver;
   private final long startTime;
   private PageManager pageManager;
+
+  private APIManager apiManager;
   private String callingClassName = "";
   private String callingMethodName = "";
 
@@ -22,6 +27,7 @@ public class TestContext {
     startTime = nanoTime;
     webDriver = init(scenarioContext.isHeadless());
     pageManager = new PageManager(this);
+    apiManager = new APIManager(this, RestAssured.requestSpecification);
     logger.info(id);
   }
 

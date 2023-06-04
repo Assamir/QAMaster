@@ -5,7 +5,7 @@ import org.qam.page.AbstractPage;
 
 public abstract class AbstractAmazonPage extends AbstractPage {
     protected AbstractAmazonPage(TestContext testContext) {
-        super("https://www.amazon.pl", testContext);
+        super("https://www.amazon.pl", "https://swapi.dev/api/",testContext);
     }
 
 
