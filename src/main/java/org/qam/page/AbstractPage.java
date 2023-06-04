@@ -1,36 +1,33 @@
 package org.qam.page;
 
-import io.restassured.RestAssured;
-import io.restassured.specification.RequestSpecification;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import org.qam.conf.TestContext;
 
 import java.time.Duration;
 
 public abstract class AbstractPage {
+
+    protected Page page;
     protected String URL;
     protected String BaseAPI;
-    protected WebDriver webDriver;
-    protected RequestSpecification requestSpecification;
+    protected Browser browser;
+//    protected RequestSpecification requestSpecification;
 
 
     protected AbstractPage(String url, String baseAPI, TestContext testContext) {
+        this.browser = testContext.getBrowser();
+        this.page = browser.newPage();
         this.URL = url;
-        webDriver = testContext.getWebDriver();
         this.BaseAPI = baseAPI;
-        requestSpecification = RestAssured.given().header("Content-type", "application/json").baseUri(baseAPI);
+//        requestSpecification = RestAssured.given().header("Content-type", "application/json").baseUri(baseAPI);
     }
 
-    public RequestSpecification getRequestSpecification(){
-        return requestSpecification;
-    }
+//    public RequestSpecification getRequestSpecification(){
+//        return requestSpecification;
+//    }
 
     public String getBaseAPI() {
         return BaseAPI;
@@ -43,42 +40,29 @@ public abstract class AbstractPage {
     }
 
     public void navigateToStartPage() {
-        webDriver.get(URL);
+        page.navigate(URL);
     }
 
-    protected AbstractPage click(By by) {
-        getWebElement(by).click();
+    protected AbstractPage click(AriaRole ariaRole, String selector) {
+        getWebElement(ariaRole, selector).click();
         return this;
     }
 
-    protected AbstractPage setTextInputField(By by, String text) {
-        getWebElement(by).sendKeys(text);
+    protected AbstractPage setTextInputField(AriaRole ariaRole, String selector, String text) {
+        getWebElement(ariaRole, selector).fill(text);
         return this;
     }
 
-  protected String getValue(By by) {
-    try {
-      getWebElement(by).getText();
-    } catch (TimeoutException | NoSuchElementException e) {
-      System.out.println("Element not found: " + by);
-    }
-    return getWebElement(by).getText();
+  protected String getValue(AriaRole ariaRole, String selector) {
+    return getWebElement(ariaRole, selector).innerText();
   }
 
-  private WebElement getWebElement(By by) {
-    var wait = new FluentWait<>(webDriver)
-        .withTimeout(Duration.ofSeconds(30))
-        .pollingEvery(Duration.ofMillis(500))
-        .ignoring(NoSuchElementException.class);
-
-    try {
-      wait.until(ExpectedConditions.visibilityOf(webDriver.findElement(by)));
-//      new WebDriverWait(webDriver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
+  private Locator getWebElement(AriaRole ariaRole, String selector) {
+    switch (ariaRole){
+        default -> {
+            return page.locator(selector);
+        }
     }
-    catch (TimeoutException e){
-      System.out.println("Element not found " + by);
-    }
-    return webDriver.findElement(by);
   }
 
 }

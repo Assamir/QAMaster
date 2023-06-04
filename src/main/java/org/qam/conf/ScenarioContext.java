@@ -1,17 +1,19 @@
 package org.qam.conf;
 
+import com.microsoft.playwright.Playwright;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class ScenarioContext {
   private boolean headless;
-
-  private Browser browser;
+  private Playwright playwright = Playwright.create();
+  private BrowserToRun BrowserToRun;
   private Map<String, TestContext> testContexts = new HashMap<>();
 
-  public ScenarioContext(boolean headless, Browser browser) {
+  public ScenarioContext(boolean headless, BrowserToRun BrowserToRun) {
     this.headless = headless;
-    this.browser = browser;
+    this.BrowserToRun = BrowserToRun;
   }
 
   public Map<String, TestContext> getTestContexts() {
@@ -34,7 +36,11 @@ public class ScenarioContext {
     return testContext;
   }
 
-  public Browser getBrowser() {
-    return browser;
+  public BrowserToRun getBrowser() {
+    return BrowserToRun;
+  }
+
+  public Playwright getPlaywright() {
+    return playwright;
   }
 }
