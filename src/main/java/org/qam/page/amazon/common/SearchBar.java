@@ -1,6 +1,6 @@
 package org.qam.page.amazon.common;
 
-import org.openqa.selenium.By;
+import com.microsoft.playwright.options.AriaRole;
 import org.qam.conf.TestContext;
 import org.qam.page.amazon.AbstractAmazonPage;
 
@@ -11,12 +11,12 @@ public class SearchBar extends AbstractAmazonPage {
     }
 
     public SearchBar setPhrase(String phrase) {
-        setTextInputField(By.cssSelector("#nav-bb-search"), phrase);
+        setTextInputField(AriaRole.SEARCH, "#nav-bb-search", phrase);
         return this;
     }
 
     public SearchBar clickSearch() {
-        click(By.className("nav-bb-button"));
+        click(AriaRole.BUTTON, "nav-bb-button");
         return this;
     }
 

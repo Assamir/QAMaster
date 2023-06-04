@@ -5,7 +5,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.qam.annotation.TestConfiguration;
 import org.qam.annotation.TestPriority;
 import org.qam.annotation.TestType;
-import org.qam.conf.Browser;
+import org.qam.conf.BrowserToRun;
 import org.qam.conf.ScenarioContext;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -15,7 +15,7 @@ class BasicTest {
 
     @BeforeAll
     void setUp() {
-        scenarioContext = new ScenarioContext(false, Browser.CHROME);
+        scenarioContext = new ScenarioContext(false, BrowserToRun.CHROME);
     }
 
     @TestConfiguration(testPriority = TestPriority.HIGH, testTypes = {TestType.UNIT, TestType.INTEGRATION})
