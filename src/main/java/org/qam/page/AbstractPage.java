@@ -1,5 +1,7 @@
 package org.qam.page;
 
+import io.restassured.RestAssured;
+import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -14,11 +16,30 @@ import java.time.Duration;
 
 public abstract class AbstractPage {
     protected String URL;
+    protected String BaseAPI;
     protected WebDriver webDriver;
+    protected RequestSpecification requestSpecification;
 
-    protected AbstractPage(String url, TestContext testContext) {
+
+    protected AbstractPage(String url, String baseAPI, TestContext testContext) {
         this.URL = url;
         webDriver = testContext.getWebDriver();
+        this.BaseAPI = baseAPI;
+        requestSpecification = RestAssured.given().header("Content-type", "application/json").baseUri(baseAPI);
+    }
+
+    public RequestSpecification getRequestSpecification(){
+        return requestSpecification;
+    }
+
+    public String getBaseAPI() {
+        return BaseAPI;
+    }
+
+    protected abstract AbstractPage setBaseAPI(String baseAPI);
+    protected AbstractPage setBaseAPIInternal(String baseAPI) {
+        BaseAPI = baseAPI;
+        return this;
     }
 
     public void navigateToStartPage() {
