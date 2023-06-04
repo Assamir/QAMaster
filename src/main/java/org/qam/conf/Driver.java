@@ -15,7 +15,17 @@ public class Driver {
 
     var options = Browser.CHROME.equals(browser) ? new ChromeOptions() : new EdgeOptions();
     if(headless) options.addArguments("--headless=new");
-    return Browser.CHROME.equals(browser) ? new ChromeDriver((ChromeOptions) options) : new EdgeDriver((EdgeOptions) options);
+    return Browser.CHROME.equals(browser) ? getChromeDriver((ChromeOptions) options) : getEdgeDriver((EdgeOptions) options);
+  }
+
+  private static EdgeDriver getEdgeDriver(EdgeOptions options) {
+    WebDriverManager.edgedriver().setup();
+    return new EdgeDriver(options);
+  }
+
+  private static ChromeDriver getChromeDriver(ChromeOptions options) {
+    WebDriverManager.chromedriver().setup();
+    return new ChromeDriver(options);
   }
 
 }
