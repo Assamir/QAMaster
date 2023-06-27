@@ -26,5 +26,7 @@ class BasicTest {
                 .setPhrase("Razer")
                 .clickSearch();
         testContext.finish();
+
+
     }
 }

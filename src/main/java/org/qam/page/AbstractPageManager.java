@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class AbstractPageManager {
-    protected Map<IPage, AbstractPage> pageMap = new HashMap<>();
+    protected static Map<IPage, AbstractPage> pageMap = new HashMap<>();
     protected TestContext testContext;
 
     public AbstractPageManager(TestContext testContext) {

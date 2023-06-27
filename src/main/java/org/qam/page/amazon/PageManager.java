@@ -1,18 +1,16 @@
 package org.qam.page.amazon;
 
 
-import org.qam.page.AbstractPageManager;
-import org.qam.page.amazon.common.SearchBar;
 import org.qam.conf.TestContext;
 import org.qam.page.AbstractPage;
+import org.qam.page.AbstractPageManager;
+import org.qam.page.amazon.common.SearchBar;
 
 public class PageManager extends AbstractPageManager {
-//    private Map<AmazonPage, AbstractPage> pageMap = new HashMap<>();
-//    private TestContext testContext;
 
-  public PageManager(TestContext testContext) {
-    super(testContext);
-  }
+    public PageManager(TestContext testContext) {
+        super(testContext);
+    }
 
     public HomePage login() {
         return (HomePage) getPage(AmazonIPage.LOGIN);
@@ -43,8 +41,8 @@ public class PageManager extends AbstractPageManager {
         }
     }
 
-  @Override
-  protected void navigateToStartPage() {
-    navigate().navigateToStartPage();
-  }
+    @Override
+    protected void navigateToStartPage() {
+        navigate().navigateToStartPage();
+    }
 }

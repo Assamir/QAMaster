@@ -6,20 +6,18 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import org.qam.conf.TestContext;
 
-import java.time.Duration;
-
 public abstract class AbstractPage {
 
-    protected Page page;
+    protected static Browser browser = null;
+    protected static Page page = null;
     protected String URL;
     protected String BaseAPI;
-    protected Browser browser;
 //    protected RequestSpecification requestSpecification;
 
 
     protected AbstractPage(String url, String baseAPI, TestContext testContext) {
-        this.browser = testContext.getBrowser();
-        this.page = browser.newPage();
+        if (browser == null) browser = testContext.getBrowser();
+        if (page == null) page = browser.newPage();
         this.URL = url;
         this.BaseAPI = baseAPI;
 //        requestSpecification = RestAssured.given().header("Content-type", "application/json").baseUri(baseAPI);
@@ -34,6 +32,7 @@ public abstract class AbstractPage {
     }
 
     protected abstract AbstractPage setBaseAPI(String baseAPI);
+
     protected AbstractPage setBaseAPIInternal(String baseAPI) {
         BaseAPI = baseAPI;
         return this;
@@ -53,16 +52,16 @@ public abstract class AbstractPage {
         return this;
     }
 
-  protected String getValue(AriaRole ariaRole, String selector) {
-    return getWebElement(ariaRole, selector).innerText();
-  }
+    protected String getValue(AriaRole ariaRole, String selector) {
+        return getWebElement(ariaRole, selector).innerText();
+    }
 
-  private Locator getWebElement(AriaRole ariaRole, String selector) {
-    switch (ariaRole){
-        default -> {
-            return page.locator(selector);
+    private Locator getWebElement(AriaRole ariaRole, String selector) {
+        switch (ariaRole) {
+            default -> {
+                return page.locator(selector);
+            }
         }
     }
-  }
 
 }
