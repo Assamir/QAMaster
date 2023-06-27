@@ -11,12 +11,12 @@ public class SearchBar extends AbstractAmazonPage {
     }
 
     public SearchBar setPhrase(String phrase) {
-        setTextInputField(AriaRole.SEARCH, "#nav-bb-search", phrase);
+        setTextInputField(AriaRole.SEARCH, "#twotabsearchtextbox", phrase);
         return this;
     }
 
     public SearchBar clickSearch() {
-        click(AriaRole.BUTTON, "nav-bb-button");
+        click(AriaRole.BUTTON, "#nav-search-submit-button");
         return this;
     }
 

@@ -57,6 +57,10 @@ public class TestContext {
     return pageManager;
   }
 
+  public ScenarioContext getScenarioContext() {
+    return scenarioContext;
+  }
+
   private void closeBrowser() {
     browser.close();
   }
