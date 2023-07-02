@@ -1,21 +1,20 @@
 package org.qam.api;
 
+import com.google.gson.Gson;
 import com.microsoft.playwright.APIRequest;
+import org.qam.dto.PlanetsDTO;
 
-public class PlanetAPI extends AbstractAPI {
+import java.util.List;
+import java.util.logging.Logger;
+
+public class PlanetAPI extends AbstractSWAPI {
+    private static final Logger logger = Logger.getLogger(PlanetAPI.class.getName());
+
     public PlanetAPI(APIRequest apiRequest) {
-        super(apiRequest);
+        super(apiRequest, "planets");
     }
 
-    public PlanetAPI(APIRequest apiRequest, String endpoint) {
-        super(apiRequest, endpoint);
-    }
-
-    public PlanetAPI(APIRequest apiRequest, String baseURL, String endpoint) {
-        super(apiRequest, baseURL, endpoint);
-    }
-
-    public void getPlanets() {
-
+    public List<PlanetsDTO> getPlanets() {
+        return new Gson().fromJson(getWithDefaultConfiguration().get(endpoint).text(), ResultsPlanets.class).getResults();
     }
 }
