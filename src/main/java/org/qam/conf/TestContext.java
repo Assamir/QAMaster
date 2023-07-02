@@ -27,6 +27,7 @@ public class TestContext {
     browser = init(scenarioContext.isHeadless());
     pageManager = new PageManager(this);
 //    apiManager = new APIManager(this, RestAssured.requestSpecification);
+    apiManager = new APIManager(this);
     logger.info(id);
   }
 
@@ -63,5 +64,9 @@ public class TestContext {
 
   private void closeBrowser() {
     browser.close();
+  }
+
+  public APIManager getApiManager() {
+    return apiManager;
   }
 }

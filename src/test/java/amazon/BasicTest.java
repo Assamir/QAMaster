@@ -8,8 +8,11 @@ import org.qam.annotation.TestType;
 import org.qam.conf.BrowserToRun;
 import org.qam.conf.ScenarioContext;
 
+import java.util.logging.Logger;
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class BasicTest {
+    private static final Logger logger = Logger.getLogger(BasicTest.class.getName());
 
     ScenarioContext scenarioContext;
 
@@ -26,7 +29,12 @@ class BasicTest {
                 .setPhrase("Razer")
                 .clickSearch();
         testContext.finish();
-
-
+        var planets = testContext.getApiManager().Planets().getPlanets();
+        logger.info("planets.size: " + planets.size());
+        logger.info("planets" + planets.toString());
+        for(var planet:  planets){
+            logger.info("planet.name: " + planet.getName());
+            logger.info("planet.url: " + planet.getUrl());
+        }
     }
 }
