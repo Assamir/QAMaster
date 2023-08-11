@@ -1,22 +1,28 @@
 package amazon;
 
 import org.junit.jupiter.api.Test;
+import org.qam.Main;
 import org.qam.entity.TestFlow;
 import org.qam.entity.TestStep;
+import org.qam.repository.TestFlowRepository;
 import org.qam.service.TestFlowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-
-@SpringBootTest
+//@SpringBootTest
+@SpringBootTest(classes = Main.class)
 class TestFlowServiceTests {
 
     @Autowired
     private TestFlowService testFlowService;
+
+    @Autowired
+    private TestFlowRepository testFlowRepository;
 
     @Test
     void testCreateTestFlow() {

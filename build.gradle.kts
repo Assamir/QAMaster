@@ -28,6 +28,8 @@ dependencies {
     implementation("org.springframework:spring-context:6.0.11")
     implementation("org.springframework.boot:spring-boot-starter:3.1.2")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.1.2")
+    implementation("org.springframework.boot:spring-boot-autoconfigure-processor:3.1.2")
+
 
 
 
