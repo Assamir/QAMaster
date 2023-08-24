@@ -35,9 +35,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.1.2")
     implementation("org.springframework.boot:spring-boot-autoconfigure-processor:3.1.2")
 
-
-
-
     testImplementation("org.hsqldb:hsqldb:2.7.2")
     testImplementation("io.qameta.allure:allure-junit5:2.23.0")
     testImplementation("io.qameta.allure:allure-commandline:2.13.9")

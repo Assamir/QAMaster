@@ -53,4 +53,14 @@ public class TestFlow {
         this.steps = steps;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TestFlow{" +
+                "id=" + id +
+                ", flowName='" + flowName + '\'' +
+                ", executionTime=" + executionTime +
+                ", steps=" + steps +
+                '}';
+    }
 }
