@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EnableJpaRepositories(basePackages = {"org.qam.service"})
+//@EnableJpaRepositories(basePackages = {"org.qam.service"})
+@EnableJpaRepositories(basePackages = {"org.qam.repository"})
 @SpringBootApplication()
 public class Main {
   public static void main(String[] args) {
