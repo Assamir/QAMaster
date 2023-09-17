@@ -17,6 +17,14 @@ public class TestStep {
     @JoinColumn(name = "testFlow_id")
     private TestFlow testFlow;
 
+    public TestStep() {
+    }
+
+    public TestStep(String stepDescription, boolean stepSuccessful) {
+        this.stepDescription = stepDescription;
+        this.stepSuccessful = stepSuccessful;
+    }
+
     public Long getId() {
         return id;
     }

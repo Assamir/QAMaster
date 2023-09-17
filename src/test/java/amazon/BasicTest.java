@@ -25,14 +25,18 @@ class BasicTest {
     void basicSearch() {
         var testContext = scenarioContext.createTestContext();
         var pageManager = testContext.getPageManager();
+        var fraze = "Razer";
         pageManager.searchBar()
-                .setPhrase("Razer")
+                .setPhrase(fraze)
                 .clickSearch();
+        testContext.addStep("Searching for: " + fraze, true);
         testContext.finish();
+        testContext.addStep("Finished UI part", true);
+
         var planets = testContext.getApiManager().Planets().getPlanets();
         logger.info("planets.size: " + planets.size());
         logger.info("planets" + planets.toString());
-        for(var planet:  planets){
+        for (var planet : planets) {
             logger.info("planet.name: " + planet.getName());
             logger.info("planet.url: " + planet.getUrl());
         }

@@ -6,41 +6,46 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ScenarioContext {
-  private boolean headless;
-  private Playwright playwright = Playwright.create();
-  private BrowserToRun BrowserToRun;
-  private Map<String, TestContext> testContexts = new HashMap<>();
+    private boolean headless;
+    private Playwright playwright = Playwright.create();
+    private BrowserToRun BrowserToRun;
+    private Map<String, TestContext> testContexts = new HashMap<>();
 
-  public ScenarioContext(boolean headless, BrowserToRun BrowserToRun) {
-    this.headless = headless;
-    this.BrowserToRun = BrowserToRun;
-  }
+    public ScenarioContext() {
+    }
 
-  public Map<String, TestContext> getTestContexts() {
-    return testContexts;
-  }
+    public ScenarioContext(boolean headless, BrowserToRun BrowserToRun) {
+        this.headless = headless;
+        this.BrowserToRun = BrowserToRun;
+    }
 
-  public ScenarioContext addTestContext(TestContext testContexts) {
-    this.testContexts.computeIfAbsent(testContexts.getId(), (k) -> testContexts);
+    public Map<String, TestContext> getTestContexts() {
+        return testContexts;
+    }
 
-    return this;
-  }
+    public ScenarioContext addTestContext(TestContext testContexts) {
+        this.testContexts.computeIfAbsent(testContexts.getId(), (k) -> testContexts);
 
-  public boolean isHeadless() {
-    return headless;
-  }
+        return this;
+    }
 
-  public TestContext createTestContext() {
-    var testContext = new TestContext(this);
-    addTestContext(testContext);
-    return testContext;
-  }
+    public boolean isHeadless() {
+        return headless;
+    }
 
-  public BrowserToRun getBrowser() {
-    return BrowserToRun;
-  }
+    public TestContext createTestContext() {
+//        var testContext = new TestContext(this);
+        var testContext = new TestContext();
+        testContext.init(this);
+        addTestContext(testContext);
+        return testContext;
+    }
 
-  public Playwright getPlaywright() {
-    return playwright;
-  }
+    public BrowserToRun getBrowser() {
+        return BrowserToRun;
+    }
+
+    public Playwright getPlaywright() {
+        return playwright;
+    }
 }

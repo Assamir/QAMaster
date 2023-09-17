@@ -1,5 +1,5 @@
 plugins {
-    java
+    id("java")
     id("io.qameta.allure") version "2.11.2"
 }
 
@@ -16,8 +16,8 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.bonigarcia:webdrivermanager:5.3.2")
-    implementation("com.microsoft.playwright:playwright:1.34.0")
+    implementation("io.github.bonigarcia:webdrivermanager:5.5.3")
+    implementation("com.microsoft.playwright:playwright:1.37.0")
     implementation("com.typesafe:config:1.4.2")
     implementation(platform("org.junit:junit-bom:5.9.1"))
     implementation("org.junit.jupiter:junit-jupiter:5.9.1")
@@ -30,21 +30,16 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
 
 
-    implementation("org.springframework:spring-context:6.0.11")
-    implementation("org.springframework.boot:spring-boot-starter:3.1.2")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.1.2")
-    implementation("org.springframework.boot:spring-boot-autoconfigure-processor:3.1.2")
+    implementation("org.springframework:spring-context:6.0.12")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:3.1.3")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.1.3")
+    implementation("org.springframework.boot:spring-boot-autoconfigure-processor:3.1.3")
 
     testImplementation("org.hsqldb:hsqldb:2.7.2")
     testImplementation("io.qameta.allure:allure-junit5:2.23.0")
     testImplementation("io.qameta.allure:allure-commandline:2.13.9")
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test:3.1.2")
-
-
-//    testImplementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
-
+    testImplementation("org.springframework.boot:spring-boot-starter-test:3.1.3")
 }
 
 tasks.test {

@@ -36,5 +36,9 @@ public class TestFlowService {
         return testFlowRepository.findById(id).orElse(null);
     }
 
+    public void save(TestFlow testFlow) {
+        testFlowRepository.save(testFlow);
+    }
+
     // Add more methods as needed...
 }
