@@ -21,8 +21,8 @@ class BasicTest {
         scenarioContext = new ScenarioContext(false, BrowserToRun.CHROME);
     }
 
-    @TestConfiguration(testPriority = TestPriority.HIGH, testTypes = {TestType.UNIT, TestType.INTEGRATION})
-    void basicSearch() {
+    @TestConfiguration(testPriority = TestPriority.HIGH, testTypes = {TestType.CRITICAL_PATH})
+    void basicWebSearch() {
         var testContext = scenarioContext.createTestContext();
         var pageManager = testContext.getPageManager();
         var fraze = "Razer";
@@ -32,6 +32,10 @@ class BasicTest {
         testContext.addStep("Searching for: " + fraze, true);
         testContext.finish();
         testContext.addStep("Finished UI part", true);
+    }
+    @TestConfiguration(testPriority = TestPriority.HIGH, testTypes = {TestType.API})
+    void basicApiSearch() {
+        var testContext = scenarioContext.createTestContext();
 
         var planets = testContext.getApiManager().Planets().getPlanets();
         logger.info("planets.size: " + planets.size());

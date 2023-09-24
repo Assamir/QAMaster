@@ -1,5 +1,5 @@
 package org.qam.annotation;
 
 public enum TestType {
-    CRITICAL_PATH, FUNCTIONAL, UNIT, INTEGRATION
+    API, CRITICAL_PATH, FUNCTIONAL, UNIT, INTEGRATION
 }

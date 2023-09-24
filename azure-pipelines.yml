@@ -20,4 +20,16 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+#    tasks: 'build'
+
+- script: sudo apt install -y libxss1 libasound2  # Install required libraries for Playwright
+  displayName: 'Install Dependencies'
+
+- script: npx playwright install-deps  # Install Playwright dependencies
+  displayName: 'Install Playwright Dependencies'
+
+- script: ./gradlew build  # Build the project
+  displayName: 'Build Project'
+
+- script: ./gradlew runHeadlessTest  # Run the Playwright test in headless mode
+  displayName: 'Run Playwright Test in Headless Mode'
