@@ -1,0 +1,24 @@
+CRITERIA
+Sale             ,Buy    ,Sell
+City             ,Austin ,Gdansk
+Status           ,New    ,Used
+Vehicle          ,BMW    ,Audi       ,Mercedes
+Color            ,Red    ,Blue
+Hours            ,Working,Non-working
+
+NEGATIVE CRITERIA
+Sale             ,Trade
+Vehicle          ,Lada
+Color            ,Yellow
+
+REQUIRED TESTS
+ID               ,Sale   ,City       ,Status  ,Vehicle,Color,Hours
+1                ,Buy    ,Austin     ,Used    ,Audi   ,Blue ,Non-working
+2                ,Buy    ,Gdansk     ,Used    ,Audi   ,Blue ,Working
+3                ,Sell   ,Gdansk     ,New     ,Audi   ,Red  ,Working
+4                ,       ,Gdansk     ,        ,BMW    ,Red
+
+CONSTRAINTS
+When             ,Vehicle,is         ,BMW
+And              ,City   ,is         ,Austin
+Then             ,Color  ,isNot      ,Red
