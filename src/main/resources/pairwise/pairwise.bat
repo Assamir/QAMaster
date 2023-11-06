@@ -1,1 +1,0 @@
-java -jar pairwise.jar
