@@ -23,6 +23,15 @@ dependencies {
 
     // TestFX for JavaFX UI testing
     implementation("org.testfx:testfx-core:4.0.17")
+    implementation("org.testfx:testfx-junit:4.0.17")
+    implementation("org.testfx:testfx-junit5:4.0.17")
+    implementation("org.openjfx:javafx-fxml:22-ea+16")
+    implementation("org.openjfx:javafx-controls:22-ea+16")
+
+    implementation("org.springframework.boot:spring-boot-starter:3.1.5")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.3")
+
+
 
     // Playwright for browser automation
     implementation("com.microsoft.playwright:playwright:1.34.0")
