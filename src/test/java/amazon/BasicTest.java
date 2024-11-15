@@ -18,7 +18,7 @@ class BasicTest {
 
     @BeforeAll
     void setUp() {
-        scenarioContext = new ScenarioContext(false, BrowserToRun.CHROME);
+        scenarioContext = new ScenarioContext(true, BrowserToRun.CHROME);
     }
 
     @TestConfiguration(testPriority = TestPriority.HIGH, testTypes = {TestType.CRITICAL_PATH})
