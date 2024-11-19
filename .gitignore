@@ -43,5 +43,5 @@ bin/
 /.idea/sonarlint/
 /.idea/
 
-
+allure-results/
 ajcore.*.txt
